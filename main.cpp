@@ -5,6 +5,20 @@
 #include <cstdlib>
 using namespace std;
 
+int sti(char a)
+{
+    if(a=='A')return 10;
+    if(a=='B')return 8;
+    if(a=='C')return 6;
+    if(a=='D')return 4;
+    if(a=='E')return 2;
+}
+float fcgpa(char a,char b,char c,char d)
+{
+    float cgpa=(sti(a)+sti(b)+sti(c)+sti(d))/4;
+    return cgpa;
+}
+
 int main()
 {
 
@@ -279,7 +293,8 @@ int main()
                                         record >> word2;
                                         nametemp = word2;
                                         record >> word2;
-                                        cgpatemp = word2;
+                                        float cg = fcgpa(c1temp, c2temp, c3temp,c4temp);
+                                        cgpatemp = to_string(cg);
                                         record >> word2;
                                         record >> word2;
                                         record >> word2;
