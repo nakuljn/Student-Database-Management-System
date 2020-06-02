@@ -5,6 +5,21 @@
 #include <cstdlib>
 using namespace std;
 
+float sti(char a)
+{
+    if(a=='A')return 10;
+    if(a=='B')return 8;
+    if(a=='C')return 6;
+    if(a=='D')return 4;
+    if(a=='E')return 2;
+    return 0;
+}
+float fcgpa(char a,char b,char c,char d)
+{
+    float cgpa=(sti(a)+sti(b)+sti(c)+sti(d))/4;
+    return cgpa;
+}
+
 int main()
 {
 
@@ -264,7 +279,8 @@ int main()
                                     count++;
                                     if(roll == word2){
                                         flag4 = 1;
-                                        string rolltemp, nametemp, cgpatemp, c1temp, c2temp, c3temp, c4temp;
+                                        string rolltemp, nametemp, cgpatemp;
+                                        char c1temp, c2temp, c3temp, c4temp;
                                         string strfin;
                                          cout<<"enter grade in course1"<<endl;
                                          cin>>c1temp;
@@ -279,7 +295,8 @@ int main()
                                         record >> word2;
                                         nametemp = word2;
                                         record >> word2;
-                                        cgpatemp = word2;
+                                        float cg = fcgpa(c1temp, c2temp, c3temp,c4temp);
+                                        cgpatemp = to_string(cg);
                                         record >> word2;
                                         record >> word2;
                                         record >> word2;
