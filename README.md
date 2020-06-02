@@ -9,4 +9,4 @@ Some features of this project are
 # How to use
 1. Enter the number given in the options to perform the certain task.
 2. You can add records, delete records and view records.
-3. You can also signup/login as a instructor.
+3. You can also signup/login as an instructor.
