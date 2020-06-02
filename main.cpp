@@ -27,20 +27,21 @@ int main()
     cout<<"Choose Options\n1. Student Login\n2. Admin Login\n3. Instructor Login\n4. Exit\n";
     int n = 0;
     cin>>n;
-
+    string heads[7]={"Roll No.: ","Name: ","CGPA: ","Course1: ","Course2: ","Course3: ","Course4: "};
     while(n != 4){
 
     	while(n==1)
 		{
+		    //system("cls");
     		string rollno;
     		cout<<"Choose Options\n1. View Record\n2. Exit\n";
 			int v;
     		cin>>v;
     		if(v==1)
 	    	{
+	    	    system("cls");
 	    		cout<<"Enter Roll no.: ";
 		        cin>>rollno;
-		        string heads[7]={"Roll No.: ","Name: ","CGPA: ","Course1: ","Course2: ","Course3: ","Course4: "};
 		        ifstream infile;
 		        infile.open("record1.txt");
 		        string line;
@@ -63,16 +64,19 @@ int main()
 		        }
 		        if(flag==0)
 				{
+				    system("cls");
 		            cout<<"No record found!"<<endl;
 		        }
 		        infile.close();
 			}
 	        if(v==2)
 	        {
+	            system("cls");
 	        	break;
 			}
 	    }
         while(n==2){
+            system("cls");
     		string aduser = "abcd";
 		  	string adpass = "efgh";
     		cout<<"1. Login\n2. Exit\n";
@@ -80,6 +84,7 @@ int main()
             cin>>x;
             if(x==1)
             {
+                system("cls");
             	string user,pass;
                 cout<<"Enter Login Id\n";
                 cin>>user;
@@ -91,6 +96,7 @@ int main()
 				}
 				if(user==aduser && pass==adpass)
 				{
+				    system("cls");
 					cout<<"Login Successful"<<endl;
         			cout<<"Choose Options\n1. View Student Records\n2. Add Student Record\n3. Delete Student Record\n4. Exit"<<endl;
 
@@ -100,14 +106,21 @@ int main()
         				cin>>a;
 
         				if(a == 1){
+                            system("cls");
                             fstream fin;
                             fin.open("record1.txt");
                             fin.seekg(0, ios::end);
-                            if(fin.tellg() == 0)
-                                 cout<<"No records found"<<endl;
+                            if(fin.tellg() == 0){
+                                system("cls");
+                                cout<<"No records found"<<endl;
+                            }
                             else{
                                  string line;
                                  fin.seekg(0, ios::beg);
+                                 system("cls");
+                                 for(int i=0;i<7;i++){
+                                    cout<<heads[i]<<" ";
+                                 }cout<<endl;
                                  while(fin){
                                     getline(fin, line);
                                     cout<<line<<endl;
@@ -117,6 +130,7 @@ int main()
         				}
         				if(a==2)
 		                   {
+                              system("cls");
 		                      string roll;
 		                      string name;
 		                      string cgpa;
@@ -138,7 +152,8 @@ int main()
 		                      cin>>c3;
 		                      cout<<endl<<"Enter grade in course 4 :";
 		                      cin>>c4;
-		                      cout<<endl<<"Record added Successfully";
+		                      system("cls");
+		                      cout<<"Record added Successfully";
 
 		                      string append;
 		                      append=roll+" "+name+" "+cgpa+" "+c1+" "+c2+" "+c3+" "+c4;
@@ -150,6 +165,7 @@ int main()
 		            		}
 		            	if(a==3)
 		            	{
+		            	    system("cls");
 		            		cout<<"Enter Roll No. of the record to delete"<<endl;
 		            		string roll_no;
 		            		string word;
@@ -181,15 +197,19 @@ int main()
 									fin2.close();
 									remove("record1.txt");
 									rename("temp.txt","record1.txt");
-									cout<<"Recorded deleted successfully"<<endl;
+									system("cls");
+									cout<<"Record deleted successfully"<<endl;
 									break;
 								}
 							}
-							if(flag == 0)
+							if(flag == 0){
+                                system("cls");
                                 cout<<"No such record found"<<endl;
+							}
 		            	}
 		            	if(a==4)
 		            	{
+		            	    system("cls");
 		            		break;
 		            	}
 		            	cout<<"\nChoose Options\n1. View Student Records\n2. Add Student Record\n3. Delete Student Record\n4. Exit"<<endl;
@@ -198,6 +218,7 @@ int main()
             }
             if(x==2)
             {
+                system("cls");
             	break;
             }
          }
@@ -207,6 +228,7 @@ int main()
             int x;
             cin>>x;
             if(x==1){
+                system("cls");
                 fstream file;
                 file.open("record2.txt", ios::in | ios::out);
                 cout<<"Enter Username\n";
@@ -234,6 +256,7 @@ int main()
                 file.close();
 
                 if(flag1 && flag2){
+                    system("cls");
                     cout<<"Welcome"<<endl;
                     while(1){
                         cout<<"What you want to do"<<endl;
@@ -241,6 +264,7 @@ int main()
                         int op;
                         cin>>op;
                         if(op == 1){
+                                system("cls");
                                 fstream record;
                                 record.open("record1.txt", ios::in | ios::out);
                                 cout<<"Enter Roll Number"<<endl;
@@ -258,13 +282,16 @@ int main()
                                         break;
                                     }
                                 }
-                                if(flag3 == 0)
+                                if(flag3 == 0){
+                                    system("cls");
                                     cout<<"Record not Found"<<endl;
+                                }
 
                                 record.close();
 
                             }
                         if(op == 2){
+                                system("cls");
                                 fstream record;
                                 record.open("record1.txt", ios::in | ios::out);
                                 cout<<"Enter Roll Number"<<endl;
@@ -290,6 +317,8 @@ int main()
                                          cin>>c3temp;
                                          cout<<"enter grade in course4"<<endl;
                                          cin>>c4temp;
+                                         system("cls");
+                                         cout<<"Recorded Successfully"<<endl;
 
                                         rolltemp = roll;
                                         record >> word2;
@@ -317,22 +346,26 @@ int main()
                                 remove("record1.txt");
                                 rename("tempfile.txt", "record1.txt");
                                 if(flag4 == 0){
+                                    system("cls");
                                     cout<<"No such roll number found"<<endl;
 
                                 }
                             }
 
                         if(op == 3){
+                                system("cls");
                                 break;
                             }
                         }
                     }
                     else{
+                        system("cls");
                         cout<<"Invalid Credentials"<<endl;
                     }
                 }
 
                 if(x==2){
+                    system("cls");
                     ofstream file;
                     file.open("record2.txt", ios::out | ios::app);
                     cout<<"Enter Username"<<endl;
@@ -349,8 +382,10 @@ int main()
                     file.close();
                 }
 
-                if(x==3)
+                if(x==3){
+                    system("cls");
                     break;
+                }
             }
         cout<<"Choose Options\n1. Student Login\n2. Admin Login\n3. Instructor Login\n4. Exit\n";
         cin>>n;
