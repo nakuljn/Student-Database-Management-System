@@ -78,12 +78,29 @@ int main()
 				if(user==aduser && pass==adpass)
 				{
 					cout<<"Login Successful"<<endl;
-        			cout<<"Choose Options\n1. Edit Student Record\n2. Add Student Record\n3. Delete Student Record\n4. Exit"<<endl;
+        			cout<<"Choose Options\n1. View Student Records\n2. Add Student Record\n3. Delete Student Record\n4. Exit"<<endl;
 
         			while(1)
         			{
         				int a = 0;
         				cin>>a;
+
+        				if(a == 1){
+                            fstream fin;
+                            fin.open("record1.txt");
+                            fin.seekg(0, ios::end);
+                            if(fin.tellg() == 0)
+                                 cout<<"No records found"<<endl;
+                            else{
+                                 string line;
+                                 fin.seekg(0, ios::beg);
+                                 while(fin){
+                                    getline(fin, line);
+                                    cout<<line<<endl;
+                                }
+                            }
+
+        				}
         				if(a==2)
 		                   {
 		                      string roll;
@@ -156,7 +173,7 @@ int main()
 		            	{
 		            		break;
 		            	}
-		            	cout<<"Choose Options\n1. Edit Student Record\n2. Add Student Record\n3. Delete Student Record\n4. Exit"<<endl;
+		            	cout<<"\nChoose Options\n1. View Student Records\n2. Add Student Record\n3. Delete Student Record\n4. Exit"<<endl;
         			}
 				}
             }
