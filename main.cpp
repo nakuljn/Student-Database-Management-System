@@ -1,0 +1,325 @@
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <string>
+#include<conio.h>
+#include <cstdlib>
+using namespace std;
+
+int main()
+{
+
+
+    cout<<"Choose Options\n1. Student Login\n2. Admin Login\n3. Instructor Login\n4. Exit\n";
+    int n = 0;
+    cin>>n;
+
+    while(n != 4){
+
+    	while(n==1)
+		{
+    		string rollno;
+    		cout<<"Choose Options\n1. View Record\n2. Exit\n";
+			int v;
+    		cin>>v;
+    		if(v==1)
+	    	{
+	    		cout<<"Enter Roll no.: ";
+		        cin>>rollno;
+		        string heads[7]={"Roll No.: ","Name: ","CGPA: ","Course1: ","Course2: ","Course3: ","Course4: "};
+		        ifstream infile;
+		        infile.open("record1.txt");
+		        string line;
+		        int flag=0;
+		        while (getline(infile, line)) {
+		            istringstream words(line);
+		            string word;
+		            words>>word;
+		            if(word==rollno){
+		                flag=1;
+		                system("cls");
+		                istringstream details(line);
+		                string value;
+		                int headsc=0;
+		                while(details>>value){
+		                    cout<<heads[headsc++]<<value<<endl;
+		                }
+		                break;
+		            }
+		        }
+		        if(flag==0)
+				{
+		            cout<<"No record found!"<<endl;
+		        }
+		        infile.close();
+			}
+	        if(v==2)
+	        {
+	        	break;
+			}
+	    }
+        while(n==2){
+    		string aduser = "abcd";
+		  	string adpass = "efgh";
+    		cout<<"1. Login\n2. Exit\n";
+            int x;
+            cin>>x;
+            if(x==1)
+            {
+            	string user,pass;
+                cout<<"Enter Login Id\n";
+                cin>>user;
+                cout<<endl<<"Password :";
+		 	    cin>>pass;
+		 	    if(user!=aduser || pass!=adpass)
+				{
+		    		cout<<endl<<"invalid credentials"<<endl;
+				}
+				if(user==aduser && pass==adpass)
+				{
+					cout<<"Login Successful"<<endl;
+        			cout<<"Choose Options\n1. Edit Student Record\n2. Add Student Record\n3. Delete Student Record\n4. Exit"<<endl;
+
+        			while(1)
+        			{
+        				int a = 0;
+        				cin>>a;
+        				if(a==2)
+		                   {
+		                      string roll;
+		                      string name;
+		                      string cgpa;
+		                      string c1;
+		                      string c2;
+		                      string c3;
+		                      string c4;
+		                      cout<<"Enter roll no. :";
+		                      cin>>roll;
+		                      cout<<endl<<"Enter name :";
+		                      cin>>name;
+		                      cout<<endl<<"Enter cgpa :";
+		                      cin>>cgpa;
+		                      cout<<endl<<"Enter marks in course 1 :";
+		                      cin>>c1;
+		                      cout<<endl<<"Enter marks in course 2 :";
+		                      cin>>c2;
+		                      cout<<endl<<"Enter marks in course 3 :";
+		                      cin>>c3;
+		                      cout<<endl<<"Enter marks in course 4 :";
+		                      cin>>c4;
+		                      cout<<endl<<"Record added Successfully";
+
+		                      string append;
+		                      append=roll+" "+name+" "+cgpa+" "+c1+" "+c2+" "+c3+" "+c4;
+		                      ofstream fout;
+		                      fout.open("record1.txt",ios::app);
+		                      fout<<append<<endl;
+		                      fout.close();
+
+		            		}
+		            	if(a==3)
+		            	{
+		            		cout<<"Enter Roll No. of the record to delete"<<endl;
+		            		string roll_no;
+		            		string word;
+		            		cin>>roll_no;
+		            		ifstream fin;
+							fin.open("record1.txt");
+							ofstream temp;
+							temp.open("temp.txt");
+							while (fin>>word)
+							{
+                                if(word==roll_no)
+								{   string deletelinetemp;
+									string line;
+									getline(fin,deletelinetemp);
+									string deleteline = word + deletelinetemp;
+									ifstream fin2;
+									fin2.open("record1.txt");
+									while(getline(fin2,line))
+									{
+									    if(line!=deleteline)
+                                        {
+                                                temp << line << endl;
+                                        }
+									}
+									temp.close();
+									fin.close();
+									fin2.close();
+									remove("record1.txt");
+									rename("temp.txt","record1.txt");
+									break;
+								}
+							}
+		            	}
+		            	if(a==4)
+		            	{
+		            		break;
+		            	}
+		            	cout<<"Choose Options\n1. Edit Student Record\n2. Add Student Record\n3. Delete Student Record\n4. Exit"<<endl;
+        			}
+				}
+            }
+            if(x==2)
+            {
+            	break;
+            }
+         }
+
+        while(n == 3){
+            cout<<"1. Login\n2. Sign Up\n3. Exit\n";
+            int x;
+            cin>>x;
+            if(x==1){
+                fstream file;
+                file.open("record2.txt", ios::in | ios::out);
+                cout<<"Enter Username\n";
+                string username;
+                cin>>username;
+                string word;
+                int flag =0;
+                while(file >> word){
+                    if(username == word){
+                        string password;
+                        cout<<"Enter Password"<<endl;
+                        cin>>password;
+                        file>>word;
+                        if(password == word){
+                            cout<<"Welcome"<<endl;
+                            while(1){
+                            cout<<"What you want to do"<<endl;
+                            cout<<"1. View Records of a student\n2. Edit grades of a student\n3. Exit"<<endl;
+                            int op;
+                            cin>>op;
+                            if(op == 1){
+                                fstream record;
+                                record.open("record1.txt", ios::in | ios::out);
+                                cout<<"Enter Roll Number"<<endl;
+                                string roll;
+                                cin >> roll;
+                                string word2;
+                                int flag2 = 0;
+                                while(record >> word2){
+                                    //cout<<word2<<endl;
+                                    if(word2 == roll){
+                                        flag2 = 1;
+                                        cout<<word2<<" ";
+                                        record>>word2;
+                                        cout<<word2<<" ";
+                                        record>>word2;
+                                        cout<<word2<<" ";
+                                        record>>word2;
+                                        cout<<word2<<" ";
+                                        record>>word2;
+                                        cout<<word2<<" ";
+                                        record>>word2;
+                                        cout<<word2<<" ";
+                                        record>>word2;
+                                        cout<<word2<<endl;
+                                        break;
+                                    }
+                                }
+                                if(flag2 == 0)
+                                    cout<<"Record not Found"<<endl;
+
+                                record.close();
+
+                            }
+                            if(op == 2){
+                                fstream record;
+                                record.open("record1.txt", ios::in | ios::out);
+                                cout<<"Enter Roll Number"<<endl;
+                                string roll;
+                                cin >> roll;
+                                string word2;
+                                int flag2 = 0;
+                                fstream temp;
+                                temp.open("tempfile.txt", ios::out);
+                                int count = 0;
+                                while(record >> word2){
+                                    count++;
+                                    if(roll == word2){
+                                        flag2 = 1;
+                                        string rolltemp, nametemp, cgpatemp, c1temp, c2temp, c3temp, c4temp;
+                                        string strfin;
+                                         cout<<"enter your grade in c1"<<endl;
+                                         cin>>c1temp;
+                                         cout<<"enter your grade in c2"<<endl;
+                                         cin>>c2temp;
+                                         cout<<"enter your grade in c1"<<endl;
+                                         cin>>c3temp;
+                                         cout<<"enter your grade in c1"<<endl;
+                                         cin>>c4temp;
+
+                                        rolltemp = roll;
+                                        record >> word2;
+                                        nametemp = word2;
+                                        record >> word2;
+                                        cgpatemp = word2;
+                                        record >> word2;
+                                        record >> word2;
+                                        record >> word2;
+                                        record >> word2;
+                                        record >> word2;
+                                        strfin = rolltemp+" "+nametemp+" "+cgpatemp+" "+c1temp+" "+c2temp+" "+c3temp+" "+c4temp;
+                                        temp << strfin <<endl;
+                                    }
+
+                                    temp << word2 <<" ";
+                                if(count%7 == 0){
+                                    temp << endl;
+                                    count = 0;
+                                }
+                                }
+                                temp.close();
+                                record.close();
+                                remove("record1.txt");
+                                rename("tempfile.txt", "record1.txt");
+                                if(flag2 == 0){
+                                    cout<<"No such roll number found"<<endl;
+
+                                }
+                            }
+
+                            if(op == 3){
+                                flag = 1;
+                                break;
+                            }
+                        }
+                        }
+                        else{
+                            flag = 1;
+                            cout<<"Wrong Password"<<endl;
+                            break;
+                        }
+                    }
+                }
+                if(flag == 0)
+                    cout<<"Invalid Username"<<endl;
+                file.close();
+            }
+
+            if(x==2){
+                ofstream file;
+                file.open("record2.txt", ios::out | ios::app);
+                cout<<"Enter Username"<<endl;
+                string username;
+                cin>>username;
+                cout<<"Enter Password"<<endl;
+                string password;
+                cin>>password;
+                cout<<"Enter your course number"<<endl;
+                string course;
+                cin>>course;
+                string str = username + " " + password + " " + course;
+                file<<str<<endl;
+                file.close();
+            }
+
+            if(x==3)
+                break;
+        }
+        cout<<"Choose Options\n1. Student Login\n2. Admin Login\n3. Instructor Login\n4. Exit\n";
+        cin>>n;
+    }
+}
