@@ -115,13 +115,13 @@ int main()
 		                      cin>>name;
 		                      cout<<endl<<"Enter cgpa :";
 		                      cin>>cgpa;
-		                      cout<<endl<<"Enter marks in course 1 :";
+		                      cout<<endl<<"Enter grade in course 1 :";
 		                      cin>>c1;
-		                      cout<<endl<<"Enter marks in course 2 :";
+		                      cout<<endl<<"Enter grade in course 2 :";
 		                      cin>>c2;
-		                      cout<<endl<<"Enter marks in course 3 :";
+		                      cout<<endl<<"Enter grade in course 3 :";
 		                      cin>>c3;
-		                      cout<<endl<<"Enter marks in course 4 :";
+		                      cout<<endl<<"Enter grade in course 4 :";
 		                      cin>>c4;
 		                      cout<<endl<<"Record added Successfully";
 
@@ -166,6 +166,7 @@ int main()
 									fin2.close();
 									remove("record1.txt");
 									rename("temp.txt","record1.txt");
+									cout<<"Recorded deleted successfully"<<endl;
 									break;
 								}
 							}
@@ -265,13 +266,13 @@ int main()
                                         flag4 = 1;
                                         string rolltemp, nametemp, cgpatemp, c1temp, c2temp, c3temp, c4temp;
                                         string strfin;
-                                         cout<<"enter your grade in c1"<<endl;
+                                         cout<<"enter grade in course1"<<endl;
                                          cin>>c1temp;
-                                         cout<<"enter your grade in c2"<<endl;
+                                         cout<<"enter grade in course2"<<endl;
                                          cin>>c2temp;
-                                         cout<<"enter your grade in c1"<<endl;
+                                         cout<<"enter grade in course3"<<endl;
                                          cin>>c3temp;
-                                         cout<<"enter your grade in c1"<<endl;
+                                         cout<<"enter grade in course4"<<endl;
                                          cin>>c4temp;
 
                                         rolltemp = roll;
