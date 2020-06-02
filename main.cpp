@@ -142,12 +142,14 @@ int main()
 		            		cin>>roll_no;
 		            		ifstream fin;
 							fin.open("record1.txt");
+							int flag = 0;
 							ofstream temp;
 							temp.open("temp.txt");
 							while (fin>>word)
 							{
                                 if(word==roll_no)
-								{   string deletelinetemp;
+								{  flag = 1;
+                                    string deletelinetemp;
 									string line;
 									getline(fin,deletelinetemp);
 									string deleteline = word + deletelinetemp;
@@ -168,6 +170,8 @@ int main()
 									break;
 								}
 							}
+							if(flag == 0)
+                                cout<<"No such record found"<<endl;
 		            	}
 		            	if(a==4)
 		            	{
