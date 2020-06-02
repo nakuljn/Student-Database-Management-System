@@ -2,7 +2,6 @@
 #include <fstream>
 #include <sstream>
 #include <string>
-#include<conio.h>
 #include <cstdlib>
 using namespace std;
 
