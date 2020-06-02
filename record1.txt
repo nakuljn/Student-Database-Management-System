@@ -1,0 +1,3 @@
+101 aaa 10.000000 a a a a
+102 bbb 10 a a a a 
+104 dddd 9.8 a a a b 
