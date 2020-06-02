@@ -1,5 +1,5 @@
 # Student-Database-Management-System
-Here we are making an student database in c++. 
+Here we are making an student database management system in c++. We will be doing this with the help of file handling. 
 
 Some features of this project are
 1. Student Login : Student can login and view their record (cgpa, marks in subjects);
