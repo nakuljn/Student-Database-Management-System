@@ -7,11 +7,11 @@ using namespace std;
 
 float sti(char a)
 {
-    if(a=='A')return 10;
-    if(a=='B')return 8;
-    if(a=='C')return 6;
-    if(a=='D')return 4;
-    if(a=='E')return 2;
+    if(a=='A' || a=='a')return 10;
+    if(a=='B' || a=='b')return 8;
+    if(a=='C' || a=='c')return 6;
+    if(a=='D' || a=='d')return 4;
+    if(a=='E' || a=='e')return 2;
     return 0;
 }
 float fcgpa(char a,char b,char c,char d)
