@@ -5,13 +5,14 @@
 #include <cstdlib>
 using namespace std;
 
-int sti(char a)
+float sti(char a)
 {
     if(a=='A')return 10;
     if(a=='B')return 8;
     if(a=='C')return 6;
     if(a=='D')return 4;
     if(a=='E')return 2;
+    return 0;
 }
 float fcgpa(char a,char b,char c,char d)
 {
@@ -278,7 +279,8 @@ int main()
                                     count++;
                                     if(roll == word2){
                                         flag4 = 1;
-                                        string rolltemp, nametemp, cgpatemp, c1temp, c2temp, c3temp, c4temp;
+                                        string rolltemp, nametemp, cgpatemp;
+                                        char c1temp, c2temp, c3temp, c4temp;
                                         string strfin;
                                          cout<<"enter grade in course1"<<endl;
                                          cin>>c1temp;
