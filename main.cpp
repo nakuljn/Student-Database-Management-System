@@ -29,10 +29,11 @@ int main()
     cin>>n;
     string heads[7]={"Roll No.: ","Name: ","CGPA: ","Course1: ","Course2: ","Course3: ","Course4: "};
     while(n != 4){
-
+        int flue=0;
     	while(n==1)
-		{
-		    //system("cls");
+		{   if(flue==0)
+		    system("cls");
+            flue=1;
     		string rollno;
     		cout<<"Choose Options\n1. View Record\n2. Exit\n";
 			int v;
@@ -58,7 +59,7 @@ int main()
 		                int headsc=0;
 		                while(details>>value){
 		                    cout<<heads[headsc++]<<value<<endl;
-		                }
+		                }cout<<endl;
 		                break;
 		            }
 		        }
@@ -92,12 +93,12 @@ int main()
 		 	    cin>>pass;
 		 	    if(user!=aduser || pass!=adpass)
 				{
-		    		cout<<endl<<"invalid credentials"<<endl;
+		    		cout<<endl<<"Invalid credentials"<<endl;
 				}
 				if(user==aduser && pass==adpass)
 				{
 				    system("cls");
-					cout<<"Login Successful"<<endl;
+					cout<<"Login Successful"<<endl<<endl;
         			cout<<"Choose Options\n1. View Student Records\n2. Add Student Record\n3. Delete Student Record\n4. Exit"<<endl;
 
         			while(1)
